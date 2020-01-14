@@ -11,20 +11,20 @@ void touch()
     px = map(p.y, 85, 895, 0, 320);
     uint8_t x = 0;
     uint8_t y = 216;
-    show_string("p.x:", 0, y, 1, RED, BLACK, 1);
-    show_number_int(p.x, x + 24, y, 1, BLUE, BLACK  , 0);
+    show_string("p.x:", 0, y, 1, fc1, BLACK, 1);
+    show_number_int(p.x, x + 24, y, 1, fc2, BLACK  , 0);
 
-    show_string("p.y:", 0, y + 8, 1, RED, BLACK, 1);
-    show_number_int(p.y, x + 24, y + 8, 1, BLUE, BLACK  , 0);
+    show_string("p.y:", 0, y + 8, 1, fc1, BLACK, 1);
+    show_number_int(p.y, x + 24, y + 8, 1, fc2, BLACK  , 0);
 
-    show_string("p.z:", 0, y + 16, 1, RED, BLACK, 1);
-    show_number_int(p.z, x + 24, y + 16, 1, BLUE, BLACK  , 0);
+    show_string("p.z:", 0, y + 16, 1, fc1, BLACK, 1);
+    show_number_int(p.z, x + 24, y + 16, 1, fc2, BLACK  , 0);
 
-    show_string("px:", x + 50, y, 1, RED, BLACK, 1);
-    show_number_int(px, x + 66, y, 1, BLUE, BLACK  , 0);
+    show_string("px:", x + 50, y, 1, fc1, BLACK, 1);
+    show_number_int(px, x + 66, y, 1, fc2, BLACK  , 0);
 
-    show_string("py:", x + 50, y + 8, 1, RED, BLACK, 1);
-    show_number_int(py, x + 66, y + 8, 1, BLUE, BLACK  , 0);
+    show_string("py:", x + 50, y + 8, 1, fc1, BLACK, 1);
+    show_number_int(py, x + 66, y + 8, 1, fc2, BLACK  , 0);
 
     //在主屏幕时的触屏操作
     if (main_display_touch == 1) main_touch();
@@ -35,19 +35,19 @@ void touch()
 void main_touch()
 {
   //加减温度
-  if (px < 300 && px > 250 && py < 60 && py > 20)
+  if (px < 300 && px > 250 && py < 40 && py > 0)
   {
     set_temp += 10;
     set_temp_limit();
     buzzer1();
-    show_number_int(set_temp, 130, 48, 2, BLUE, BLACK  , 0); //更新设置温度的显示
+    show_number_int(set_temp, 130, 48, 2, WHITE, BLACK  , 0); //更新设置温度的显示
   }
-  else if (px < 300 && px > 250 && py < 120 && py > 80)
+  else if (px < 300 && px > 250 && py < 100 && py > 60)
   {
     set_temp -= 10;
     set_temp_limit();
     buzzer1();
-    show_number_int(set_temp, 130, 48, 2, BLUE, BLACK  , 0); //更新设置温度的显示
+    show_number_int(set_temp, 130, 48, 2, WHITE, BLACK  , 0); //更新设置温度的显示
   }
   //加热总开关
   else if (px < 320 && px > 250 && py < 166 && py > 144) //开启加热
@@ -98,9 +98,8 @@ void set_touch()
     p_change = 1; //可以更改P数值
     i_change = 0;
     d_change = 0;
-    set_display_state = 1;
   }
-  else if (px < 185 && px > 135 && py < 50 && py > 0) //改I数值
+  else if (px < 205 && px > 115 && py < 50 && py > 0) //改I数值
   {
     buzzer1();
     keyboard_state = 1; //调出键盘显示
@@ -108,9 +107,8 @@ void set_touch()
     p_change = 0; //可以更改i数值
     i_change = 1;
     d_change = 0;
-    set_display_state = 1;
   }
-  else if (px < 320 && px > 250 && py < 50 && py > 0) //改D数值
+  else if (px < 320 && px > 230 && py < 50 && py > 0) //改D数值
   {
     buzzer1();
     keyboard_state = 1; //调出键盘显示
@@ -118,7 +116,6 @@ void set_touch()
     p_change = 0; //可以更改d数值
     i_change = 0;
     d_change = 1;
-    set_display_state = 1;
   }
   else if (keyboard_touch_state == 1) keyboard_touch();
 }
@@ -144,7 +141,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 1;
       else if (dotFlag == 1) keyboard_cache = keyboard_cache  + 0.1;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -154,7 +151,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 2;
       else if (dotFlag == 1) keyboard_cache = keyboard_cache  + 0.2;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -164,7 +161,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 3;
       else if (dotFlag == 1) keyboard_cache = keyboard_cache  + 0.3;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -176,7 +173,7 @@ void keyboard_touch() //键盘算法
       keyboard_cache = int(keyboard_cache);
       dotFlag = 0;
     }
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     keyboard_state = 1;
     delay(100);
@@ -187,7 +184,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 4;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.4;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -197,7 +194,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 5;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.5;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -207,7 +204,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 6;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.6;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -216,7 +213,7 @@ void keyboard_touch() //键盘算法
   {
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -226,7 +223,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 7;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.7;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -236,7 +233,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 8;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.8;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -246,7 +243,7 @@ void keyboard_touch() //键盘算法
     if (keyboard_cache <= 99)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 9;
       else if (dotFlag == 1)keyboard_cache = keyboard_cache  + 0.9;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     delay(100);
   }
@@ -254,13 +251,13 @@ void keyboard_touch() //键盘算法
   else if (px < keyboard_x + 24 + 150 && px > keyboard_x + 150 && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
   {
     dotFlag = 1;
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
+    show_number_float(1, keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
     buzzer1();
     keyboard_state = 1;
     delay(100);
   }
   //按下OK
-  else if (px < keyboard_x + 24 + 190 && px > keyboard_x + 150 && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
+  else if (px < keyboard_x + 135 + 34 && px > keyboard_x + 135  && py < keyboard_y - 129 + 24  && py > keyboard_y - 129 )
   {
     if (p_change == 1) {
       p = keyboard_cache;
@@ -280,9 +277,12 @@ void keyboard_touch() //键盘算法
     dotFlag = 0;
     //keyboard_state = 0; //关闭显示键盘
     //keyboard_touch_state = 0; //关闭键盘触摸
-    set_display_state = 1; //更新pid设置界面
+    //set_display_state = 1; //更新设置显示
     keyboard_state = 1; //更新键盘显示
-    show_number_float(1, keyboard_cache, keyboard_x + 50, keyboard_y - 128, 3, BLUE, BLACK  , 0);
-    delay(100);
+    mylcd.Set_Draw_color(BLACK);//刷新pid的背景
+    mylcd.Fill_Rectangle(0, 30, 320, 30 + 24);
+    mylcd.Set_Draw_color(BLACK);//刷新keyboard_cache的背景
+    mylcd.Fill_Rectangle(keyboard_x, keyboard_y - 129, keyboard_x + 100, keyboard_y - 129 + 24);
+    delay(50);
   }
 }

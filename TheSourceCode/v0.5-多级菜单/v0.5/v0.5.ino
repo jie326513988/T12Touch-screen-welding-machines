@@ -25,15 +25,26 @@ TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 #define STATUS_X 10
 #define STATUS_Y 65
 //16进制颜色
-#define  BLACK   0x0000 //黑
-#define BLUE    0x001F  //蓝
-#define RED     0xF800  //红
-#define GREEN   0x07E0  //绿
-#define CYAN    0x07FF  //青
-#define MAGENTA 0xF81F  //洋红
-#define YELLOW  0xFFE0  //黄
-#define WHITE   0xFFFF  //白
-
+#define BLACK     0x0000          //黑色    0,   0,   0
+#define NAVY      0x000F          //深蓝色  0,   0, 127
+#define DGREEN    0x03E0          //深绿色  0,  127,  0
+#define DCYAN     0x03EF          //深青色  0,  127, 127       
+#define MAROON    0x7800          //深红色  127,   0,   0      
+#define PURPLE    0x780F          //紫色    127,   0, 127      
+#define OLIVE     0x7BE0          //橄榄绿  127, 127,   0      
+#define LGRAY     0xC618          //灰白色  192, 192, 192      
+#define DGRAY     0x7BEF          //深灰色  127, 127, 127      
+#define BLUE      0x001F          //蓝色    0,   0, 255        
+#define GREEN     0x07E0          //绿色    0, 255,   0        
+#define CYAN      0x07FF          //青色    0, 255, 255        
+#define RED       0xF800          //红色    255,   0,   0      
+#define MAGENTA   0xF81F          //品红    255,   0, 255      
+#define YELLOW    0xFFE0          //黄色    255, 255, 0        
+#define WHITE     0xFFFF          //白色    255, 255, 255      
+#define PINK      0xD2F5          //粉红色
+int fc1 = PURPLE; //变量名 紫色
+int fc2 = DCYAN; //数值 深青色
+int fc3= DGRAY;  //键盘字体颜色
 #define t12_temp_pin A5      //T12温度读取引脚
 #define sleep_pin A3         //休眠状态读取引脚
 #define ec_pin A4            //电流读取引脚

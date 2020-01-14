@@ -25,5 +25,5 @@ void show_number_float(uint8_t ws,double num, int16_t x, int16_t y, uint8_t csiz
   mylcd.Set_Text_Size(csize);
   mylcd.Set_Text_colour(fc);
   mylcd.Set_Text_Back_colour(bc);
-  mylcd.Print_Number_Float(num, ws, x, y, '.', 0, ' ');
+  mylcd.Print_Number_Float(num, ws, x, y, '.', 3, ' ');
 }
