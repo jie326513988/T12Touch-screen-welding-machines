@@ -2,6 +2,35 @@
 ## 使用了LCDWIKI_KBV、LCDWIKI_GUI、TouchScreen、MsTimer2库，感谢
 ## v0.5体验版，可以控温，误差3℃，加热到260℃15秒，可以调节PID并可断电保存数据。下一版本加入待机温度和更多的设置吧
 #### 2020-01-14 终于实现了模拟键盘输入并可更改pid数值并储存在Eeprom中，有点小BUG但不影响使用。
+##### 引脚定义<br>
+//D0  D1  D2  D3  D4  D5  D6  D7<br>
+//8   9   2   3   4   5   6   7<br>
+LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
+#define YP A2  // must be an analog pin, use "An" notation!<br>
+#define XM A1  // must be an analog pin, use "An" notation!<br>
+#define YM 9   // can be a digital pin<br>
+#define XP 8   // can be a digital pin<br>
+#define t12_temp_pin A5      //T12温度读取引脚<br>
+#define sleep_pin A3         //休眠状态读取引脚<br>
+#define ec_pin A4            //电流读取引脚<br>
+#define volage_pin A6        //电源电压读取引脚<br>
+#define ntc_pin A7           //ntc读取引脚<br>
+#define t12_pwm_pin 10       //T12加热控制引脚<br>
+#define buzzer_pin 11        //蜂鸣器控制引脚<br>
+##### 电路简介
+1.热电偶信号放大电路<br>
+    使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
+2.功率输出电路<br>
+    使用光耦和AOD4148场效应管组成的简单功率输出控制电路。<br>
+3.检测电流电压电路<br>
+    电流检测使用ACS712量程为±5A的霍尔感应电流传感器，输出并未加低通滤波电路，测量值比较飘，只能降低精度至0.1A。<br>
+    电压检测使用简单的分压电路测量，量程为0-42V，精度0.1V，输入检测电压前反向并联26V的瞬态抑制二极管，防止脉冲电涌损坏单片机。<br>
+4.5V供电电路<br>
+    使用固定输出4.98V的降压模块，拔插式。为单片机、LCD、运算放大器、电流传感器供电。同样为了防止脉冲电涌，输出反向并联5.1V的稳压二极管。<br>
+5.显示电路<br>
+    使用2.4寸带触摸功能LCD屏幕模块，拔插式。提供显示功能和触摸功能。<br>
+6.控制核心<br>
+    使用ArduinoProMini平台，核心为Atmel328p-AU,拔插式。<br>
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/PID%E8%B0%83%E8%8A%82%E7%95%8C%E9%9D%A2.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/pcb%E6%AD%A3%E9%9D%A2.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/pcb%E8%83%8C%E9%9D%A2.jpg)
