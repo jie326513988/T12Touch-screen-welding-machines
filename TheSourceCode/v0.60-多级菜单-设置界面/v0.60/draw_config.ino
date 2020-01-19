@@ -23,7 +23,7 @@ void show_number_int(long num, int16_t x, int16_t y, uint8_t csize, uint16_t fc,
   mylcd.Set_Text_Size(csize);
   mylcd.Set_Text_colour(fc);
   mylcd.Set_Text_Back_colour(bc);
-  mylcd.Print_Number_Int(num, x, y, 0, ' ', 10);
+  mylcd.Print_Number_Int(num, x, y, 4, ' ', 10);
 }
 
 //指定位置画浮点数

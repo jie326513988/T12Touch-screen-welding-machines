@@ -63,6 +63,7 @@ void main_touch()
     t12_switch = 0; //关闭总开关
     display_state = 1; //刷新一下
     t12_temp_read_time = 800; //延长测量时间
+    sleep_count = 0;
     buzzer1();
   }
   //进入设置界面第一页
@@ -368,11 +369,11 @@ void keyboard_touch() //键盘算法
           EEPROM.put(sleep_count_set_eeprom, sleep_count_set);
           break;
       }
-      
+
       if (display_touch == PidDisplay) display_state = PidDisplay; //更新PID显示
       else if (display_touch == SleepDisplay) display_state = SleepDisplay; //更新PID显示
       mylcd.Fill_Rect(keyboard_x, keyboard_y - 129, 100, 24, BLACK); //用黑色刷新keyboard_cache
-      
+
       buzzer1();
       change_num = 0; //数值标志位归零
       keyboard_cache = 0; //键盘数值缓存归零

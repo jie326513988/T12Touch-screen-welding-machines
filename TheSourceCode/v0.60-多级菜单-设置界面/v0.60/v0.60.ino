@@ -105,7 +105,9 @@ float ec = 0.0; //T12工作电流
 boolean sleep_state = 0;  //休眠状态
 uint16_t sleep_count = 0; //休眠计数
 uint16_t sleep_count_set = 60; //进入休眠的阈值
+//uint16_t sleep_off_heater = 1800; //关闭加热的阈值
 uint8_t sleep_temp = 170;      //休眠时的温度
+uint8_t sleep_temp_cache = 0; //休眠前的温度
 
 //显示、触屏标志位
 uint8_t display_state = 1; //显示界面的标志位
@@ -156,9 +158,6 @@ void setup()
   EEPROM.get(d_eeprom, d);
   EEPROM.get(sleep_count_set_eeprom, sleep_count_set);
   EEPROM.get(sleep_temp_eeprom, sleep_temp);
-  digitalWrite(buzzer_pin, 1);
-  delay(10);
-  digitalWrite(buzzer_pin, 0);
   //MsTimer2::set(3000, FPS);
   //MsTimer2::start();
 }

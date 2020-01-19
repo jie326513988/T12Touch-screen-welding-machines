@@ -16,12 +16,12 @@ void mainDisplay()
     if (t12_switch == 0)
     {
       show_string("ON", 250,  144, 3, DGRAY, BLACK, 1);
-      mylcd.Set_Text_colour(255, 20, 147); //深粉色
+      mylcd.Set_Text_colour(  255, 0, 0); //  纯红
       show_string_no_fc("OFF", 250,  188, 3, BLACK, 1);
     }
     else if (t12_switch == 1)
     {
-      mylcd.Set_Text_colour(255, 20, 147); //深粉色
+      mylcd.Set_Text_colour(  255, 0, 0); //  纯红
       show_string_no_fc("ON", 250,  144, 3, BLACK, 1);
       show_string("OFF", 250,  188, 3, DGRAY, BLACK, 1);
     }
