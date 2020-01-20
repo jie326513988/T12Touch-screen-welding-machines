@@ -86,7 +86,7 @@ void ec_read() //读取电流
 
 void sleep_read() //休眠
 {
-  if ((millis() - sleep_read_time < 1000) || t12_switch == 0) return;
+  if ((millis() - sleep_read_time < 900) || t12_switch == 0) return;
   sleep_read_time = millis();
   if (sleep_state == digitalRead(sleep_pin)) sleep_count++; //烙铁没动，计数增加
   else //烙铁动了，计数清零
@@ -107,5 +107,9 @@ void sleep_read() //休眠
     sleep_temp_cache = set_temp; //休眠前将温度记录下来
     set_temp = sleep_temp; //将温度调至休眠温度
   }
-  else if (sleep_count == 1800) t12_switch = 0; //半小时没操作，关闭加热
+  else if (sleep_count > 1800) 
+  {
+    t12_switch = 0; //半小时没操作，关闭加热
+    sleep_count = 0;
+  }
 }

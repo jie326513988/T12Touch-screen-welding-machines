@@ -4,12 +4,21 @@ void setDisplay()
   {
     uint8_t y = 40;
     mylcd.Set_Text_colour(255, 105, 180); //热情的粉红
-    show_string_no_fc("PID", 0, 0 * y, 3, BLACK, 1);
-    mylcd.Set_Text_colour(199, 21, 133); //适中的紫罗兰红色
-    show_string_no_fc("Sleep", 0, 1 * y, 3, BLACK, 1);
+    show_string_no_fc("PID", CENTER, 0 * y, 3, BLACK, 1);
+
+    mylcd.Set_Text_colour(60, 179, 113); //春天的绿色
+    show_string_no_fc("Sleep", CENTER, 1 * y, 3, BLACK, 1);
+
+    mylcd.Set_Text_colour(221, 160, 221); //李子
+    show_string_no_fc("V0.60 By:LCJ", CENTER, 233, 1, BLACK, 1);
+
     show_string("Back", 276, 225, 2, RED, BLACK, 1);
+
     display_state = 0;
   }
+
+  2mylcd.Set_Draw_color(random(255), random(255), random(255));
+  mylcd.Draw_Pixel(random(320), random(240));
 }
 
 void pid_display()
@@ -21,7 +30,7 @@ void pid_display()
     show_string("D", 234, 0, 3, fc1, BLACK, 1);
 
     show_string("Back", 276, 225, 2, RED, BLACK, 1);
-    
+
     mylcd.Fill_Rect(0, 30, 320, 24, BLACK); //用黑色矩形填充掉原来的数值
     show_number_float(p, 0, 30, 3, fc2, BLACK  , 0);
     show_number_float(i, 117, 30, 3, fc2, BLACK  , 0);
@@ -50,7 +59,7 @@ void sleep_display()
     show_string("time", 220, 20, 2, fc1, BLACK, 1);
 
     show_string("Back", 276, 225, 2, RED, BLACK, 1);
-    
+
     mylcd.Fill_Rect(50, 40, 320, 24, BLACK); //用黑色矩形填充掉原来的数值
     show_number_int(sleep_temp, 50, 40, 2, fc2, BLACK  , 0);
     show_number_int(sleep_count_set, 220, 40, 2, fc2, BLACK  , 0);

@@ -100,7 +100,7 @@ float ntc_temp = 0; //ntc温度
 
 //电压电流、休眠
 float volage = 0.0; //电源电压
-uint32_t volage_time = 0; 
+uint32_t volage_time = 0;
 float ec = 0.0; //T12工作电流
 boolean sleep_state = 0;  //休眠状态
 uint16_t sleep_count = 0; //休眠计数
@@ -124,13 +124,13 @@ uint8_t change_num = 0; //需要改变的数值标志位
 #define p_change_num                1
 #define i_change_num                2
 #define d_change_num                3
-#define sleep_temp_change_num       4 
+#define sleep_temp_change_num       4
 #define sleep_count_set_change_num  5
 
 void setup()
 {
   //Serial.begin(9600);
-  pinMode(t12_temp_pin, 0); 
+  pinMode(t12_temp_pin, 0);
   pinMode(sleep_pin, INPUT_PULLUP);//设置上拉模式
   pinMode(ec_pin, 0);
   pinMode(volage_pin, 0);
