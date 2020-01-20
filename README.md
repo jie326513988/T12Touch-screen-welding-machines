@@ -42,4 +42,4 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/006.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/007.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/008.jpg)
-![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/009.jpg)
+![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/009.png)
