@@ -113,5 +113,6 @@ void sleep_read() //休眠
   {
     t12_switch = 0; //半小时没操作，关闭加热
     sleep_count = 0;
+    display_state = MainDisplay;
   }
 }
