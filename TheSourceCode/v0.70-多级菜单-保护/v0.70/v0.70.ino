@@ -95,7 +95,7 @@ uint8_t fps_1 = 0;
 float t12_ad = 0.0; //T12原始AD
 uint16_t t12_temp = 0.0; //T12温度
 boolean t12_switch = 0; //T12加热总开关
-int16_t set_temp = 200; //设置温度
+int16_t set_temp = 260; //设置温度
 
 float ntc_temp = 0; //ntc温度
 
