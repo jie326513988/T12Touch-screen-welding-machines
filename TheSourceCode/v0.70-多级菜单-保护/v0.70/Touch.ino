@@ -43,7 +43,7 @@ void main_touch()
     sleep_count = 0;
     set_temp_limit();
     buzzer1();
-    show_number_int_0(set_temp, 35, 141, 4, WHITE, BLACK  , 0);
+    show_number_int_0(set_temp, 45, 141, 3, WHITE, BLACK  , 0);
   }
   else if (px < 320 && px > 250 && py < 110 && py > 70)
   {
@@ -51,7 +51,7 @@ void main_touch()
     sleep_count = 0;
     set_temp_limit();
     buzzer1();
-    show_number_int_0(set_temp, 35, 141, 4, WHITE, BLACK  , 0);
+    show_number_int_0(set_temp, 45, 141, 3, WHITE, BLACK  , 0);
   }
   //加热总开关
   else if (px < 320 && px > 248 && py < 166 && py > 144) //开启加热
@@ -68,8 +68,26 @@ void main_touch()
     sleep_count = 0;
     buzzer1();
   }
+  else if (px < 95 && px > 60 && py < 240 && py > 200)  //一键设置400度
+  {
+    buzzer1();
+    set_temp = 400;
+    sleep_count = 0;
+  }
+  else if (px < 155 && px > 120 && py < 240 && py > 200) //一键设置320度
+  {
+    buzzer1();
+    set_temp = 320;
+    sleep_count = 0;
+  }
+  else if (px < 215 && px > 180 && py < 240 && py > 200) //一键设置240度
+  {
+    buzzer1();
+    set_temp = 240;
+    sleep_count = 0;
+  }
   //进入设置界面第一页
-  else if (px < 110 && px > 0 && py < 240 && py > 216)
+  else if (px < 40 && px > 0 && py < 240 && py > 200)
   {
     buzzer1();
     display_state = SetDisplay1;

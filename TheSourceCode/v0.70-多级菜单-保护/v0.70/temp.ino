@@ -20,10 +20,10 @@ void read_t12_temp() //定时读取T12的温度
   if (millis() - t12_temp_time < t12_temp_read_time) return;
   t12_temp_time = millis();
   analogWrite(t12_pwm_pin, 0);
-  //int time0 = millis();
+  int time0 = millis();
   t12_display();
-  //int time1 = millis();
-  //Serial.println(time1 - time0);
+  int time1 = millis();
+  Serial.println(time1 - time0);
   for (uint8_t a = 0; a < 10; a++) //稍微滤一下波
   {
     t12_ad += analogRead(t12_temp_pin);
@@ -105,13 +105,13 @@ void sleep_read() //休眠
   }
   if (sleep_count == sleep_count_set && set_temp > sleep_temp) //达到休眠的阈值，进入休眠温度
   {
-    sleep_count = sleep_count_set; //休眠计数清零
+    //sleep_count = sleep_count_set; //休眠计数清零
     sleep_temp_cache = set_temp; //休眠前将温度记录下来
     set_temp = sleep_temp; //将温度调至休眠温度
   }
-  else if (sleep_count > 1800)
+  else if (sleep_count > 1800)  //半小时没操作，关闭加热
   {
-    t12_switch = 0; //半小时没操作，关闭加热
+    t12_switch = 0; 
     sleep_count = 0;
     display_state = MainDisplay;
   }

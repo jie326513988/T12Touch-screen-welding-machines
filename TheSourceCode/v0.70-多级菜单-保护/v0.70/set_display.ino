@@ -16,7 +16,6 @@ void setDisplay()
 
     display_state = 0;
   }
-  //show_number_int(pid_out, 130, 200, 2, fc2, BLACK  , 0);
   show_string("T12AD", 0, 176, 1, fc1, BLACK, 1);
   show_number_int_5(t12_ad, 40, 176, 1, fc2, BLACK, 0);
   show_string("T12temp", 0, 184, 1, fc1, BLACK, 1);

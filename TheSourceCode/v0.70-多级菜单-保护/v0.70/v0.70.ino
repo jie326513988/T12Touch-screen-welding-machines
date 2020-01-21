@@ -130,7 +130,7 @@ uint8_t change_num = 0; //需要改变的数值标志位
 
 void setup()
 {
-  //Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(t12_temp_pin, 0);
   pinMode(sleep_pin, INPUT_PULLUP);//设置上拉模式
   pinMode(ec_pin, 0);
