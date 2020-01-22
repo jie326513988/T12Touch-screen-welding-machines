@@ -43,7 +43,7 @@ void main_touch()
     sleep_count = 0;
     set_temp_limit();
     buzzer1();
-    show_number_int_0(set_temp, 45, 141, 3, WHITE, BLACK  , 0);
+    show_number_int_0(set_temp, 45, 150, 3, WHITE, BLACK  , 0); //刷新数值
   }
   else if (px < 320 && px > 250 && py < 110 && py > 70)
   {
@@ -51,7 +51,7 @@ void main_touch()
     sleep_count = 0;
     set_temp_limit();
     buzzer1();
-    show_number_int_0(set_temp, 45, 141, 3, WHITE, BLACK  , 0);
+    show_number_int_0(set_temp, 45, 150, 3, WHITE, BLACK  , 0); //刷新数值
   }
   //加热总开关
   else if (px < 320 && px > 248 && py < 166 && py > 144) //开启加热

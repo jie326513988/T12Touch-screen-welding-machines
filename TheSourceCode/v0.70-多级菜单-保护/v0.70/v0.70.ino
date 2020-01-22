@@ -19,7 +19,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett
 #define TS_MAXY 895
 //原始Z压力范围
 #define MINPRESSURE 10
-#define MAXPRESSURE 1000
+#define MAXPRESSURE 800
 //x+ x-的电阻值
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 // 我们有一个状态栏，显示FONA是否正常工作
@@ -130,7 +130,7 @@ uint8_t change_num = 0; //需要改变的数值标志位
 
 void setup()
 {
-  Serial.begin(9600);
+  //Serial.begin(9600);
   pinMode(t12_temp_pin, 0);
   pinMode(sleep_pin, INPUT_PULLUP);//设置上拉模式
   pinMode(ec_pin, 0);

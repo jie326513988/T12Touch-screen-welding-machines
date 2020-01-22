@@ -20,10 +20,10 @@ void read_t12_temp() //定时读取T12的温度
   if (millis() - t12_temp_time < t12_temp_read_time) return;
   t12_temp_time = millis();
   analogWrite(t12_pwm_pin, 0);
-  int time0 = millis();
+  //int time0 = millis();
   t12_display();
-  int time1 = millis();
-  Serial.println(time1 - time0);
+  //int time1 = millis();
+  //Serial.println(time1 - time0);
   for (uint8_t a = 0; a < 10; a++) //稍微滤一下波
   {
     t12_ad += analogRead(t12_temp_pin);
