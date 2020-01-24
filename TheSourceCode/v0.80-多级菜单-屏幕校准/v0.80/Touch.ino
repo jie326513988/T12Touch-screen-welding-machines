@@ -82,7 +82,7 @@ void main_touch() //主界面的触摸
   //加减温度
   if (millis() - touch_time > 60) //不让调温按键运行太快
   {
-    if (px < 320 && px > 250 && py < 45 && py > 0)
+    if (px < 320 && px > 240 && py < 45 && py > 0) //加温
     {
       set_temp += 10;
       sleep_count = 0;
@@ -93,7 +93,7 @@ void main_touch() //主界面的触摸
       mylcd.Set_Text_colour(WHITE);
       mylcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
     }
-    else if (px < 320 && px > 250 && py < 110 && py > 70)
+    else if (px < 320 && px > 240 && py < 110 && py > 70) //减温
     {
       set_temp -= 10;
       sleep_count = 0;
@@ -122,21 +122,21 @@ void main_touch() //主界面的触摸
     buzzer1();
   }
   //一键设置400度
-  else if (px < 95 && px > 60 && py < 240 && py > 200)
+  else if (px < 100 && px > 55 && py < 240 && py > 200)
   {
     buzzer1();
     set_temp = 400;
     sleep_count = 0;
   }
   //一键设置320度
-  else if (px < 155 && px > 120 && py < 240 && py > 200)
+  else if (px < 160 && px > 115 && py < 240 && py > 200)
   {
     buzzer1();
     set_temp = 320;
     sleep_count = 0;
   }
   //一键设置240度
-  else if (px < 215 && px > 180 && py < 240 && py > 200)
+  else if (px < 220 && px > 175 && py < 240 && py > 200)
   {
     buzzer1();
     set_temp = 240;
@@ -269,14 +269,14 @@ void screen_set_touch() //屏幕设置界面的触摸
     calibration_count = 0; //校准计数清零
     mylcd.Fill_Screen(BLACK); //画黑色清屏
   }
-  else if (px < 270 && px > 50 && py < 160 && py > 140 && calibration_state == 0) //开关显示坐标
+  else if (px < 270 && px > 50 && py < 160 && py > 130 && calibration_state == 0) //开关显示坐标
   {
     buzzer1();
     coordinates_state = !coordinates_state;
     mylcd.Fill_Screen(BLACK); //画黑色清屏
     display_state = ScreenSetDisplay;
   }
-  else if (px < 270 && px > 50 && py < 70 && py > 50) //开关校准屏幕
+  else if (px < 270 && px > 50 && py < 70  && py > 45) //开关校准屏幕
   {
     buzzer1();
     calibration_state = !calibration_state; //开启校准模式

@@ -62,9 +62,21 @@ int16_t pid_out = 0; //pid输出
 int16_t ek1 = 0; //上一次差值
 int16_t ek2 = 0; //上上一次差值
 int16_t ek0 = 0; //现在差值
-float p = 45.0;
-float i = 0.4;
-float d = 35.0;
+float p = 46.0;
+float i = 0.5;
+float d = 25.0;
+
+//触屏校准、设置相关
+int px, py;                      //p.x,p.y转换后的值
+boolean coordinates_state = 0;  //显示坐标的标志位
+boolean calibration_state = 0;   //校准屏幕的标志位
+uint16_t min_px, max_px, min_py, max_py;
+uint16_t MIN_PX = 125;
+uint16_t MAX_PX = 910;
+uint16_t MIN_PY = 85;
+uint16_t MAX_PY = 895;
+uint8_t calibration_location = 0;   //校准的位置
+uint16_t calibration_count = 0;     //校准触摸时间计数
 
 //eeprom
 #define p_eeprom  0                       //pid-p的eeprom地址，占用4位
@@ -107,17 +119,6 @@ uint16_t sleep_count = 0;       //休眠计数
 uint16_t sleep_count_set = 150;  //进入休眠的阈值
 uint8_t sleep_temp = 180;       //休眠时的温度
 uint16_t sleep_temp_cache = 0;  //休眠前的温度
-//触屏校准、设置相关
-int px, py;                      //p.x,p.y转换后的值
-boolean coordinates_state = 0;  //显示坐标的标志位
-boolean calibration_state = 0;   //校准屏幕的标志位
-uint16_t min_px, max_px, min_py, max_py;
-uint16_t MIN_PX = 125;
-uint16_t MAX_PX = 910;
-uint16_t MIN_PY = 85;
-uint16_t MAX_PY = 895;
-uint8_t calibration_location = 0;   //校准的位置
-uint16_t calibration_count = 0;     //校准触摸时间计数
 
 //显示、触屏标志位
 uint8_t display_state = 1;      //显示界面的标志位
