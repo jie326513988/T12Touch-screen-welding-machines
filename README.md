@@ -39,6 +39,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
     使用2.4寸带触摸功能LCD屏幕模块，拔插式。提供显示功能和触摸功能。<br>
 6.控制核心<br>
     使用ArduinoProMini平台，核心为Atmel328p-AU,拔插式。<br>
+    ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/010.png)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/001.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/002.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/003.jpg)
