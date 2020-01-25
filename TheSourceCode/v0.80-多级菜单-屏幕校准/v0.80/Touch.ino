@@ -89,9 +89,9 @@ void main_touch() //主界面的触摸
       set_temp_limit();
       buzzer1();
       //刷新设置温度数值
-      mylcd.Set_Text_Size(3);
-      mylcd.Set_Text_colour(WHITE);
-      mylcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
+      my_lcd.Set_Text_Size(3);
+      my_lcd.Set_Text_colour(WHITE);
+      my_lcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
     }
     else if (px < 320 && px > 240 && py < 110 && py > 70) //减温
     {
@@ -100,9 +100,9 @@ void main_touch() //主界面的触摸
       set_temp_limit();
       buzzer1();
       //刷新设置温度数值
-      mylcd.Set_Text_Size(3);
-      mylcd.Set_Text_colour(WHITE);
-      mylcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
+      my_lcd.Set_Text_Size(3);
+      my_lcd.Set_Text_colour(WHITE);
+      my_lcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
     }
     touch_time = millis();
   }
@@ -148,7 +148,7 @@ void main_touch() //主界面的触摸
     buzzer1();
     display_state = SetDisplay1;
     display_touch = SetDisplay1;
-    mylcd.Fill_Screen(BLACK);
+    my_lcd.Fill_Screen(BLACK);
   }
 }
 void set_touch() //设置界面的触摸
@@ -159,7 +159,7 @@ void set_touch() //设置界面的触摸
     buzzer1();
     display_state = MainDisplay; //开启主界面
     display_touch = MainDisplay; //开启主界面触摸
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   //进入PID界面
   else if (px < 320 && px > 0 && py < 30 && py > 0)
@@ -167,7 +167,7 @@ void set_touch() //设置界面的触摸
     buzzer1();
     display_state = PidDisplay; //开启pid界面
     display_touch = PidDisplay; //开启pid触摸
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   //进入Sleep界面
   else if (px < 320 && px > 0 && py < 65  && py > 35)
@@ -175,7 +175,7 @@ void set_touch() //设置界面的触摸
     buzzer1();
     display_state = SleepDisplay; //开启pid界面
     display_touch = SleepDisplay; //开启pid触摸
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   //进入屏幕设置界面
   else if (px < 320 && px > 0 && py < 110  && py > 75)
@@ -183,7 +183,7 @@ void set_touch() //设置界面的触摸
     buzzer1();
     display_state = ScreenSetDisplay; //开启pid界面
     display_touch = ScreenSetDisplay; //开启pid触摸
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
 }
 void pid_touch() //PID界面的触摸
@@ -199,7 +199,7 @@ void pid_touch() //PID界面的触摸
     keyboard_cache = 0; //键盘输入数值缓存清零
     dotFlag = 0; //键盘小数点归零
     change_num = 0; //数值标志位归零
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   else if (px < 80 && px > 0 && py < 50 && py > 0) //改P数值
   {
@@ -238,7 +238,7 @@ void sleep_touch() //休眠界面的触摸
     keyboard_cache = 0; //键盘输入数值缓存清零
     dotFlag = 0; //键盘小数点归零
     change_num = 0; //数值标志位归零
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   else if (px < 120 && px > 0 && py < 50 && py > 20) //改sleep_temp数值
   {
@@ -267,13 +267,13 @@ void screen_set_touch() //屏幕设置界面的触摸
     calibration_state = 0; //屏幕校准状态归零
     calibration_location = 0; //屏幕校准位置归零
     calibration_count = 0; //校准计数清零
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
   }
   else if (px < 270 && px > 50 && py < 160 && py > 130 && calibration_state == 0) //开关显示坐标
   {
     buzzer1();
     coordinates_state = !coordinates_state;
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
     display_state = ScreenSetDisplay;
   }
   else if (px < 270 && px > 50 && py < 70  && py > 45) //开关校准屏幕
@@ -283,7 +283,7 @@ void screen_set_touch() //屏幕设置界面的触摸
     calibration_location = 1;//校准位置1，左上角开始
     min_px = MIN_PX, max_px = MAX_PX, min_py = MIN_PY, max_py = MAX_PY;
     calibration_count = 0; //校准计数清零
-    mylcd.Fill_Screen(BLACK); //画黑色清屏
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
     display_state = ScreenSetDisplay;
   }
   //校准屏幕的操作
@@ -319,7 +319,7 @@ void screen_set_touch() //屏幕设置界面的触摸
       digitalWrite(buzzer_pin, 0);
     }
     else {
-      mylcd.Fill_Screen(BLACK); //画黑色清屏
+      my_lcd.Fill_Screen(BLACK); //画黑色清屏
       calibration_location = 1;
       display_state = ScreenSetDisplay;
       for (uint8_t a = 0; a < 3; a++) {
@@ -468,7 +468,7 @@ void keyboard_touch() //键盘算法
 
     if (display_touch == PidDisplay) display_state = PidDisplay; //更新PID显示
     else if (display_touch == SleepDisplay) display_state = SleepDisplay; //更新sleep显示
-    mylcd.Fill_Rect(keyboard_x, keyboard_y - 129, 100, 24, BLACK); //用黑色刷新keyboard_cache
+    my_lcd.Fill_Rect(keyboard_x, keyboard_y - 129, 100, 24, BLACK); //用黑色刷新keyboard_cache
 
     buzzer1();
     change_num = 0; //数值标志位归零

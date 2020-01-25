@@ -21,6 +21,8 @@ void read_t12_temp() //定时读取T12的温度
   t12_temp_time = millis();
   analogWrite(t12_pwm_pin, 0);
   //int time0 = millis();
+  //t12_display();相当于延时大概110ms,
+  //因为运放输出部分加有低通滤波，需要等待一段时间等滤波电容放完电再测量，不然测量到的值不准
   t12_display();
   //int time1 = millis();
   //Serial.println(time1 - time0);
@@ -30,9 +32,8 @@ void read_t12_temp() //定时读取T12的温度
   }
   t12_ad = t12_ad / 10.0;
   t12_temp = float(-0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978);
-  //if (t12_ad > 1020) t12_switch = 0;
   //analogWrite(t12_pwm_pin, pid_out);
-  t12_pid();
+  t12_pid(); 
   //Serial.print(t12_temp);
   //Serial.print(",");
   //Serial.println(set_temp);

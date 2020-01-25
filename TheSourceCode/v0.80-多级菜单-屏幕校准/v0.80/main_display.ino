@@ -3,23 +3,23 @@ void mainDisplay()
 {
   if (display_state == MainDisplay)
   {
-    mylcd.Set_Text_colour(fc1);
+    my_lcd.Set_Text_colour(fc1);
     show_string_no_fc("Temp", 50, 5, 2, BLACK, 1);
     show_string_no_fc("SetTemp", 30, 125, 2, BLACK, 1);
     show_string_no_fc("V", 252, 232, 1, BLACK, 1);
     show_string_no_fc("A", 283, 232, 1, BLACK, 1);
     show_string("SET", 0,  226, 2, YELLOW, BLACK, 1);
 
-    mylcd.Set_Text_colour(106,90,205); //板岩暗蓝灰色
+    my_lcd.Set_Text_colour(106,90,205); //板岩暗蓝灰色
     show_string_no_fc("400", 60,  226, 2, BLACK, 1);
-    mylcd.Set_Text_colour(147, 112, 219); // 适中的紫色
+    my_lcd.Set_Text_colour(147, 112, 219); // 适中的紫色
     show_string_no_fc("320", 120,  226, 2, BLACK, 1);
-    mylcd.Set_Text_colour(123, 104, 238); // 适中的板岩暗蓝灰色
+    my_lcd.Set_Text_colour(123, 104, 238); // 适中的板岩暗蓝灰色
     show_string_no_fc("240", 180,  226, 2, BLACK, 1);
 
-    mylcd.Set_Draw_color(0, 191, 255);
-    mylcd.Draw_Triangle(275, 5, 250, 45, 300, 45);//上三角
-    mylcd.Draw_Triangle(275, 110, 250, 70, 300, 70);//下三角
+    my_lcd.Set_Draw_color(0, 191, 255);
+    my_lcd.Draw_Triangle(275, 5, 250, 45, 300, 45);//上三角
+    my_lcd.Draw_Triangle(275, 110, 250, 70, 300, 70);//下三角
 
     if (t12_switch == 0)
     {
@@ -36,8 +36,8 @@ void mainDisplay()
   show_number_float(volage, 226, 232, 1, fc2, BLACK, 0);
   show_number_float(ec, 263, 232, 1, fc2, BLACK, 0);
   show_number_float(ntc_temp, RIGHT, 232, 1, fc2, BLACK, 0);
-  mylcd.Set_Text_Size(8);
-  mylcd.Print_Number_Int(t12_temp, 5, 30, 4, '0', 10);
-  mylcd.Set_Text_Size(3);
-  mylcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
+  my_lcd.Set_Text_Size(8);
+  my_lcd.Print_Number_Int(t12_temp, 5, 30, 4, '0', 10);
+  my_lcd.Set_Text_Size(3);
+  my_lcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
 }
