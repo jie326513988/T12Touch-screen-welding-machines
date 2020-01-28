@@ -25,7 +25,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
 #define ntc_pin A7           //ntc读取引脚<br>
 #define t12_pwm_pin 10       //T12加热控制引脚<br>
 #define buzzer_pin 11        //蜂鸣器控制引脚<br><br>
-##### 电路简介
+##### 电路简介 PCB文件待完善
 1.热电偶信号放大电路<br>
     使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
 2.功率输出电路<br>
