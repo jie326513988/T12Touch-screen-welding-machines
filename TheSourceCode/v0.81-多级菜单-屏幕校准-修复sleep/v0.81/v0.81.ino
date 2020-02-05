@@ -83,8 +83,20 @@ TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 #define MAX_PY_eeprom  29                 //校准max_py，占用4位
 
 //键盘
-#define keyboard_x 80              //键盘起点X
-#define keyboard_y 218             //键盘起点Y
+#define keyboard_x 80              //键盘起点X ,即1的坐标
+#define keyboard_y 219             //键盘起点Y
+#define keyboard_x_interval  50    //键盘X间隔
+#define keyboard_y_interval  50    //键盘Y间隔
+
+#define keyboard_x1   keyboard_x
+#define keyboard_x2   keyboard_x+keyboard_x_interval
+#define keyboard_x3   keyboard_x+keyboard_x_interval*2
+#define keyboard_x4   keyboard_x+keyboard_x_interval*3
+
+#define keyboard_y1   keyboard_y
+#define keyboard_y2   keyboard_y-keyboard_y_interval
+#define keyboard_y3   keyboard_y-keyboard_y_interval*2
+
 boolean keyboard_state = 0;        //键盘显示标志位 0-关闭，1-开启
 boolean keyboard_touch_state = 0;  //键盘触摸标志位 0-关闭，1-开启
 float keyboard_cache = 0;          //键盘输出数值缓存

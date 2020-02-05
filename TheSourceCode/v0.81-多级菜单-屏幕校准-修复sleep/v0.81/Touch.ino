@@ -71,7 +71,7 @@ void touch()
     else if (display_touch == ScreenSetDisplay) screen_set_touch();
 
     //不让键盘按键运行的太快
-    if (millis() - touch_time > 100) {
+    if (millis() - touch_time > 120) {
       if (keyboard_touch_state == 1) keyboard_touch();  //键盘
       touch_time = millis();
     }
@@ -342,7 +342,7 @@ void set_temp_limit() //设置温度限制
 void keyboard_touch() //键盘算法
 {
   //按下1
-  if (px < keyboard_x + 24 && px > keyboard_x && py < keyboard_y + 24 && py > keyboard_y)
+  if (px < keyboard_x1 + 25 && px > keyboard_x1 - 15 && py < keyboard_y1 + 32  && py > keyboard_y1 - 8 )
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 1;
@@ -351,7 +351,7 @@ void keyboard_touch() //键盘算法
   }
 
   //按下2
-  else if (px < keyboard_x + 24 + 50 && px > keyboard_x + 50 && py < keyboard_y + 24 && py > keyboard_y)
+  else if (px < keyboard_x2 + 25 && px > keyboard_x2 - 15  && py < keyboard_y1 + 32 && py > keyboard_y1 - 8)
   {
 
     if (keyboard_cache <= 99 || dotFlag == 1)
@@ -360,7 +360,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下3
-  else if (px < keyboard_x + 24 + 100 && px > keyboard_x + 100 && py < keyboard_y + 24 && py > keyboard_y)
+  else if (px < keyboard_x3 + 25 && px > keyboard_x3 - 15 && py < keyboard_y1 + 32 && py > keyboard_y1 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 3;
@@ -368,7 +368,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下<
-  else if (px < keyboard_x + 24 + 150 && px > keyboard_x + 150 && py < keyboard_y + 24 && py > keyboard_y)
+  else if (px < keyboard_x4 + 25 && px > keyboard_x4 - 15 && py < keyboard_y1 + 32 && py > keyboard_y1 - 8)
   {
     if (dotFlag == 0) keyboard_cache = int(keyboard_cache / 10);
     else if (dotFlag == 1) {
@@ -379,7 +379,7 @@ void keyboard_touch() //键盘算法
     keyboard_state = 1; //刷新键盘
   }
   //按下4
-  else if (px < keyboard_x + 24 && px > keyboard_x && py < keyboard_y + 24 - 50 && py > keyboard_y - 50)
+  else if (px < keyboard_x1 + 25 && px > keyboard_x1 - 15 && py < keyboard_y2 + 32 && py > keyboard_y2 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 4;
@@ -387,7 +387,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下5
-  else if (px < keyboard_x + 24 + 50 && px > keyboard_x + 50 && py < keyboard_y + 24 - 50 && py > keyboard_y - 50)
+  else if (px < keyboard_x2 + 25 && px > keyboard_x2 - 15 && py < keyboard_y2 + 32 && py > keyboard_y2 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 5;
@@ -395,7 +395,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下6
-  else if (px < keyboard_x + 24 + 100 && px > keyboard_x + 100 && py < keyboard_y + 24 - 50 && py > keyboard_y - 50)
+  else if (px < keyboard_x3 + 25 && px > keyboard_x3 - 15 && py < keyboard_y2 + 32 && py > keyboard_y2 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 6;
@@ -403,14 +403,14 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下0
-  else if (px < keyboard_x + 24 + 150 && px > keyboard_x + 150 && py < keyboard_y + 24 - 50 && py > keyboard_y - 50)
+  else if (px < keyboard_x4 + 25 && px > keyboard_x4 - 15 && py < keyboard_y2 + 32 && py > keyboard_y2 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10;
     buzzer1();
   }
   //按下7
-  else if (px < keyboard_x + 24 && px > keyboard_x && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
+  else if (px < keyboard_x1 + 25 && px > keyboard_x1 - 15 && py < keyboard_y3 + 32 && py > keyboard_y3 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 7;
@@ -418,7 +418,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下8
-  else if (px < keyboard_x + 24 + 50 && px > keyboard_x + 50 && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
+  else if (px < keyboard_x2 + 25 && px > keyboard_x2 - 15 && py < keyboard_y3 + 32 && py > keyboard_y3 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 8;
@@ -426,7 +426,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下9
-  else if (px < keyboard_x + 24 + 100 && px > keyboard_x + 100 && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
+  else if (px < keyboard_x3 + 25 && px > keyboard_x3 - 15 && py < keyboard_y3 + 32 && py > keyboard_y3 - 8)
   {
     if (keyboard_cache <= 99 || dotFlag == 1)
       if (dotFlag == 0) keyboard_cache = keyboard_cache * 10 + 9;
@@ -434,7 +434,7 @@ void keyboard_touch() //键盘算法
     buzzer1();
   }
   //按下.
-  else if (px < keyboard_x + 24 + 150 && px > keyboard_x + 150 && py < keyboard_y + 24 - 100 && py > keyboard_y - 100)
+  else if (px < keyboard_x4 + 25 && px > keyboard_x4 - 15 && py < keyboard_y3 + 32 && py > keyboard_y3 - 8)
   {
     dotFlag = 1;
     buzzer1();
@@ -478,7 +478,7 @@ void keyboard_touch() //键盘算法
     keyboard_state = 1; //更新键盘显示
   }
   //即时显示数值
-  if (px < keyboard_x + 173 && px > keyboard_x && py < keyboard_y + 22 && py > keyboard_y - 128) {
+  if (px < keyboard_x + 175 && px > keyboard_x - 15 && py < keyboard_y + 22 && py > keyboard_y - 128) {
     show_number_float(keyboard_cache, keyboard_x + 5, keyboard_y - 129, 3, LGRAY, BLACK, 0);
   }
 }

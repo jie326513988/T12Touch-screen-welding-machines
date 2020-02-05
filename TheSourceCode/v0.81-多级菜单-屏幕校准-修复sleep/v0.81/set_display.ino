@@ -144,20 +144,20 @@ void screen_set_display() //屏幕设置界面
 void keyboard_display() //键盘显示
 {
   my_lcd.Set_Text_colour(fc3);
-  show_string_no_fc("1", keyboard_x, keyboard_y, 3, WHITE, 1);
-  show_string_no_fc("2", keyboard_x + 50, keyboard_y, 3, WHITE, 1);
-  show_string_no_fc("3", keyboard_x + 100, keyboard_y, 3, WHITE, 1);
-  show_string_no_fc("<", keyboard_x + 150, keyboard_y , 3, WHITE, 1);
+  show_string_no_fc("1", keyboard_x1, keyboard_y1, 3, WHITE, 1);
+  show_string_no_fc("2", keyboard_x2, keyboard_y1, 3, WHITE, 1);
+  show_string_no_fc("3", keyboard_x3, keyboard_y1, 3, WHITE, 1);
+  show_string_no_fc("<", keyboard_x4, keyboard_y1, 3, WHITE, 1);
 
-  show_string_no_fc("4", keyboard_x , keyboard_y - 50, 3, WHITE, 1);
-  show_string_no_fc("5", keyboard_x + 50, keyboard_y - 50, 3, WHITE, 1);
-  show_string_no_fc("6", keyboard_x + 100, keyboard_y - 50, 3, WHITE, 1);
-  show_string_no_fc("0", keyboard_x + 150, keyboard_y - 50, 3, WHITE, 1);
+  show_string_no_fc("4", keyboard_x1, keyboard_y2, 3, WHITE, 1);
+  show_string_no_fc("5", keyboard_x2, keyboard_y2, 3, WHITE, 1);
+  show_string_no_fc("6", keyboard_x3, keyboard_y2, 3, WHITE, 1);
+  show_string_no_fc("0", keyboard_x4, keyboard_y2, 3, WHITE, 1);
 
-  show_string_no_fc("7", keyboard_x , keyboard_y - 100, 3, WHITE, 1);
-  show_string_no_fc("8", keyboard_x + 50, keyboard_y - 100, 3, WHITE, 1);
-  show_string_no_fc("9", keyboard_x + 100, keyboard_y - 100, 3, WHITE, 1);
-  if (dotFlag == 0) show_string_no_fc(".", keyboard_x + 150, keyboard_y - 100, 3, BLACK, 0);
-  else if (dotFlag == 1) show_string(".", keyboard_x + 150, keyboard_y - 100, 3, YELLOW, BLACK , 0);
+  show_string_no_fc("7", keyboard_x1, keyboard_y3, 3, WHITE, 1);
+  show_string_no_fc("8", keyboard_x2, keyboard_y3, 3, WHITE, 1);
+  show_string_no_fc("9", keyboard_x3, keyboard_y3, 3, WHITE, 1);
+  if (dotFlag == 0) show_string_no_fc(".", keyboard_x4, keyboard_y3, 3, BLACK, 0);
+  else if (dotFlag == 1) show_string(".", keyboard_x4, keyboard_y3, 3, YELLOW, BLACK , 0);
   show_string("Ok", keyboard_x + 135, keyboard_y - 129, 3, fc3, BLACK, 1);
 }
