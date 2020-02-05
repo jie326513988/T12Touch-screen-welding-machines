@@ -21,7 +21,7 @@ v0.6版上线，优化一些些内存，修改一下下菜单，增加了烙铁�
 终于实现了模拟键盘输入并可更改pid数值并储存在Eeprom中，有点小BUG但不影响使用。<br>
 2020-01-13 <br>
 初步实现稳定控温，从30℃加热到260℃需45秒，太久了。<br>
-##### 引脚定义
+#### 引脚定义
 D0  D1  D2  D3  D4  D5  D6  D7<br>
 8   9   2   3   4   5   6   7<br>
 LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
@@ -36,7 +36,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett<br>
 #define ntc_pin A7           //ntc读取引脚<br>
 #define t12_pwm_pin 10       //T12加热控制引脚<br>
 #define buzzer_pin 11        //蜂鸣器控制引脚<br><br>
-##### 电路简介 PCB文件待完善
+#### 电路简介 PCB文件待完善
 1.热电偶信号放大电路<br>
     使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
 2.功率输出电路<br>
