@@ -21,9 +21,9 @@ void read_t12_temp() //定时读取T12的温度
   t12_temp_time = millis();
   analogWrite(t12_pwm_pin, 0);
   //int time0 = millis();
-  //t12_display()相当于延时大概110ms,
+  //总显示函数相当于延时大概110ms,
   //因为运放输出部分加有低通滤波，需要等待一段时间等滤波电容放完电再测量，不然测量到的值不准
-  t12_display();
+  t12_display(); //总显示函数
   //int time1 = millis();
   //Serial.println(time1 - time0);
   for (uint8_t a = 0; a < 10; a++) //稍微滤一下波
@@ -35,7 +35,7 @@ void read_t12_temp() //定时读取T12的温度
   //计算温度，自己测量自己拟合的曲线，没有测量设备请不要改动这里
   //analogWrite(t12_pwm_pin, pid_out);
   float temp = float(-0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978);
-  t12_temp += (temp - t12_temp) * 0.9; //温度补偿
+  t12_temp += (temp - t12_temp) * 0.85; //温度补偿
   t12_pid(); //运行pid
 
   //Serial.print(t12_temp);
@@ -54,7 +54,6 @@ void volage_read() //读取电源电压
   volage = (volage_ad / 0.1181) * vcc_refer_1024; //计算电源电压 7.5/56+7.5=0.1181
   //Serial.print("电源电压：");Serial.println(volage);
 }
-
 void ntc_temp_read() //读取ntc温度
 {
   float ntc_ad = 0.0;

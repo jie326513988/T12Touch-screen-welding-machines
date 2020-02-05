@@ -1,8 +1,8 @@
-#include <TouchScreen.h>
-#include <LCDWIKI_GUI.h>
-#include <LCDWIKI_KBV.h>
-#include <EEPROM.h>
-#include <avr/wdt.h>
+#include <TouchScreen.h>     //触摸库
+#include <LCDWIKI_GUI.h>    //LCD扩展库
+#include <LCDWIKI_KBV.h>    //LCD核心库
+#include <EEPROM.h>        //eeprom库
+#include <avr/wdt.h>       //看门狗库
 
 LCDWIKI_KBV my_lcd(ILI9341, A2, A1, 13, A0, 12); //model,cs,cd,wr,rd,resett
 #define YP A2  // must be an analog pin, use "An" notation!
@@ -48,9 +48,9 @@ int16_t pid_out = 0;  //pid输出
 int16_t ek1 = 0;      //上一次差值
 int16_t ek2 = 0;      //上上一次差值
 int16_t ek0 = 0;      //现在差值
-float p = 62.0;
-float i = 0.4;
-float d = 26.0;
+float p = 65.0;
+float i = 0.6;
+float d = 24.0;
 
 //触屏校准、设置相关
 int px, py;                            //p.x,p.y转换后的值
