@@ -104,7 +104,7 @@ boolean dotFlag = 0;               //小数点标志位 0-关闭，1-开启
 
 //计数相关
 uint32_t t12_temp_time = 0;         //t12温度计算 定时运行的对比时间
-uint16_t t12_temp_read_time = 800;  //t12温度计算 定时运行的时间
+uint16_t t12_temp_read_time = 0;  //t12温度计算 定时运行的时间
 uint32_t sleep_read_time = 0;       //读取休眠 定时运行的对比时间
 uint32_t volage_time = 3000;           //电压、NTC读取 定时运行的对比时间
 uint32_t touch_time = 0;            //触摸消抖的对比时间
