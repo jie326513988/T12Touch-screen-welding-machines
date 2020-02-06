@@ -79,9 +79,6 @@ void ntc_temp_read() //读取ntc温度
     Serial.print("ntc_temp:"); Serial.println(ntc_temp);*/
 }
 
-#define FILTER_N 6
-int16_t ii = 0;
-int Value;
 void ec_read() //读取电流
 {
   float ec_ad = 0.0;
