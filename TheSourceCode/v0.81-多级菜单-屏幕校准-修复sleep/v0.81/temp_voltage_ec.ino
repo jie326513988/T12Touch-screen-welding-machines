@@ -62,9 +62,9 @@ void ntc_temp_read() //读取ntc温度
   float ntc_volage = 0.0;
   float ntc_rt = 0.0;
   float ad = 0.0;
-  float T1 = 273.15 + 25.0; //常温
-  float R1 = 10.0; //常温对应的阻值，注意单位是千欧
-  float B = 3590.0;
+  static float T1 = 273.15 + 25.0; //常温
+  static float R1 = 10.0; //常温对应的阻值，注意单位是千欧
+  static float B = 3590.0;
   for (uint8_t a = 0; a < 10; a++) //稍微滤一下波
   {
     ntc_ad += analogRead(ntc_pin);
@@ -79,6 +79,9 @@ void ntc_temp_read() //读取ntc温度
     Serial.print("ntc_temp:"); Serial.println(ntc_temp);*/
 }
 
+#define FILTER_N 6
+int16_t ii = 0;
+int Value;
 void ec_read() //读取电流
 {
   float ec_ad = 0.0;
@@ -88,6 +91,7 @@ void ec_read() //读取电流
   }
   ec = (ec_ad / 30.0) * vcc_refer_1024;
   //Serial.print("ec:"); Serial.println(ec, 2);
-  ec = abs((ec - vcc_refer_ec)) / 0.185;
-  if (ec >= 3.0) t12_switch = 0; //过流保护
+  ec = (ec - vcc_refer_ec) / 0.185;
+  if (ec < 0) ec = 0;             //没有负电流
+  if (ec >= 3.0) t12_switch = 0;  //过流保护
 }
