@@ -108,6 +108,7 @@ void screen_set_display() //屏幕设置界面
       show_string_no_fc("X", 50, 120, 2, BLACK, 1);
       show_string_no_fc("Y", 50, 160, 2, BLACK, 1);
 
+      //4个校准点
       my_lcd.Set_Draw_color(DGRAY); //深灰色
       my_lcd.Fill_Rectangle(0, 0, 4, 4);
       my_lcd.Fill_Rectangle(315, 0, 319, 4);
@@ -127,6 +128,7 @@ void screen_set_display() //屏幕设置界面
   }
   if (calibration_state == 1) //进入校准模式
   {
+    //4个校准点
     my_lcd.Set_Draw_color(GREEN);
     if (calibration_location == 1) my_lcd.Fill_Rectangle(0, 0, 4, 4);
     else if (calibration_location == 2) my_lcd.Fill_Rectangle(315, 0, 319, 4);

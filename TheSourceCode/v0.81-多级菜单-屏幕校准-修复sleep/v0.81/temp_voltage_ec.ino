@@ -8,11 +8,13 @@
 */
 void timing_volage_ntc() //定时读取电源电压和ntc温度
 {
-  if (millis() - volage_time < 3000) return;
-  volage_time = millis();
-  volage_read(); //读取电源电压
-  ntc_temp_read(); //读取ntc温度
-  if (volage >= 25.0 || ntc_temp >= 80) t12_switch = 0;//过压高温保护
+  if (millis() - volage_time > 3000)
+  {
+    volage_read(); //读取电源电压
+    ntc_temp_read(); //读取ntc温度
+    if (volage >= 25 || ntc_temp >= 80) t12_switch = 0;//过压高温保护
+    volage_time = millis();
+  }
 }
 
 void read_t12_temp() //定时读取T12的温度

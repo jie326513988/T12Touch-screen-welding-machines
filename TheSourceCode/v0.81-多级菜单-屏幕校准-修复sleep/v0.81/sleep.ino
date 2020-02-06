@@ -19,10 +19,10 @@ void sleep_read()
   }
   if (sleep_count == sleep_count_set && set_temp > sleep_temp) //达到休眠的阈值，进入休眠温度
   {
-    sleep_temp_cache = set_temp;  //休眠前将温度记录下来。
-    set_temp = sleep_temp;        //将温度调至休眠温度
+    sleep_temp_cache = set_temp;    //休眠前将温度记录下来。
+    set_temp = sleep_temp;          //将温度调至休眠温度
   }
-  else if (sleep_count > 1800)  //半小时没操作，关闭加热
+  else if (sleep_count > 1800)      //半小时没操作，关闭加热
   {
     set_temp = sleep_temp_cache;
     sleep_temp_cache = 0;

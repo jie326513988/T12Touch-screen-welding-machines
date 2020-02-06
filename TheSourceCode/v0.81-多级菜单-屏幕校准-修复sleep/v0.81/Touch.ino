@@ -1,8 +1,10 @@
 //触摸时的操作
 /*
-  打开TouchScreen.cpp修改成
-  #define NUMSAMPLES 15
-  加快触摸读取速度
+  打开TouchScreen.cpp修改成，看个人需要修改
+  #define NUMSAMPLES 20  较快的触摸响应，精度适中可能会有误触，占用更多内存
+  #define NUMSAMPLES 2   最慢的触摸响应，精度最高，占用更少内存
+  #define NUMSAMPLES 1   最快的触摸响应，精度最低，占用最少内存
+
   因为是横屏,所以
   max_px --> py的0
   min_px --> py的240
@@ -24,7 +26,7 @@ void touch()
   TSPoint p = ts.getPoint();
   pinMode(XM, OUTPUT);
   pinMode(YP, OUTPUT);
-  if (p.z < MAX_PZ && p.z > MIN_PZ && p.x < 1500 && p.x > 20)
+  if (p.z < MAX_PZ && p.z > MIN_PZ && p.x < 1020 && p.x > 60 && p.y < 1020 && p.y > 60)
   {
     //py = map(p.x, 910, 125, 0, 240);
     //px = map(p.y, 85, 895, 0, 320);
@@ -291,7 +293,7 @@ void screen_set_touch() //屏幕设置界面的触摸
   if ( calibration_location <= 4 && calibration_location > 0)
   {
     calibration_count ++;
-    if (calibration_count > 500) {
+    if (calibration_count > 400) {
       digitalWrite(buzzer_pin, 1);
       delay(15);
       digitalWrite(buzzer_pin, 0);
@@ -303,7 +305,7 @@ void screen_set_touch() //屏幕设置界面的触摸
   //按下OK
   else if (px < 320 && px > 270 && py < 160 && py > 135 && calibration_location > 4)
   {
-    if ((max_px - min_px) > 750 && (max_py - min_py) > 750)
+    if ((max_px - min_px) > 760 && (max_py - min_py) > 760)
     {
       MIN_PX = min_px;
       MAX_PX = max_px;
