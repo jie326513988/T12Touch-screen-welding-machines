@@ -315,8 +315,9 @@ void screen_set_touch() //屏幕设置界面的触摸
       EEPROM.put(MAX_PX_eeprom, MAX_PX);
       EEPROM.put(MIN_PY_eeprom, MIN_PY);
       EEPROM.put(MAX_PY_eeprom, MAX_PY);
-      calibration_location = 1;
-      display_state = ScreenSetDisplay;
+      calibration_location = 1; //校准位置1
+      display_state = ScreenSetDisplay; //刷新显示
+      my_lcd.Fill_Screen(BLACK); //画黑色清屏
       digitalWrite(buzzer_pin, 1);
       delay(15);
       digitalWrite(buzzer_pin, 0);
