@@ -51,19 +51,19 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
 #define buzzer_pin      11       //蜂鸣器控制引脚<br><br>
 #### 电路简介 PCB文件待完善
 1.热电偶信号放大电路<br>
-    使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
+   使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
 2.功率输出电路<br>
-    使用光耦和AOD4184场效应管组成的简单功率输出控制电路。<br>
+   使用光耦和AOD4184场效应管组成的简单功率输出控制电路。<br>
 3.检测电流电压电路<br>
-    电流检测使用ACS712量程为±5A的霍尔感应电流传感器，输出并未加低通滤波电路，测量值比较飘，只能降低精度至0.1A。<br>
-    电压检测使用简单的分压电路测量，量程为0-42V，精度0.1V，输入检测电压前反向并联26V的瞬态抑制二极管，防止脉冲电涌损坏单片机。<br>
+   电流检测使用ACS712量程为±5A的霍尔感应电流传感器，输出并未加低通滤波电路，测量值比较飘，只能降低精度至0.1A。<br>
+   电压检测使用简单的分压电路测量，量程为0-42V，精度0.1V，输入检测电压前反向并联26V的瞬态抑制二极管，防止脉冲电涌损坏单片机。<br>
 4.供电电路<br>
-    5V部分使用固定输出4.98V的降压模块，拔插式。为单片机、LCD、运算放大器、电流传感器供电。同样为了防止脉冲电涌，输出反向并联5.1V的稳压二极管。<br>
-    24V部分使用的AC-DC24V4A成品电源，只要电压不超过24V电流大于3A即可。<br>
+   5V部分使用固定输出4.98V的降压模块，拔插式。为单片机、LCD、运算放大器、电流传感器供电。同样为了防止脉冲电涌，输出反向并联5.1V的稳压二极管。<br>
+   24V部分使用的AC-DC24V4A成品电源，只要电压不超过24V电流大于3A即可。<br>
 5.显示电路<br>
-    使用2.4寸带触摸功能LCD屏幕模块，拔插式。提供显示功能和触摸功能。<br>
+   使用2.4寸带触摸功能LCD屏幕模块，拔插式。提供显示功能和触摸功能。<br>
 6.控制核心<br>
-    使用ArduinoProMini平台，核心为Atmel328p-AU,拔插式。<br>
+   使用ArduinoProMini平台，核心为Atmel328p-AU,拔插式。<br>
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/01.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/02.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/03.jpg)
@@ -77,3 +77,4 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/11.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/12.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/13.jpg)
+![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/14.jpg)
