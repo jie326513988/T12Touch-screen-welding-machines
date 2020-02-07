@@ -1,5 +1,5 @@
 # T12触屏焊台-ArduinoProMini-Atmega328p-au核心
-* 使用了LCDWIKI_KBV、LCDWIKI_GUI、TouchScreen、库，感谢。
+* 使用了[LCDWIKI_KBV、LCDWIKI_GUI、TouchScreen库](http://www.lcdwiki.com/zh/2.4inch_Arduino_Display)，感谢[LCDWIKI](http://www.lcdwiki.com)。
 * Arduino核心板，触摸屏，降压电路为模块拔插式，其他部分电路为贴片焊接，方便新手，方便调试。
 * 从30℃加热到260℃需12秒，400℃需25秒，稳定跳动温度1-3℃，与实际误差1-10℃（跟环境温度有关）。
 * 观看视频https://www.bilibili.com/video/av83184959
