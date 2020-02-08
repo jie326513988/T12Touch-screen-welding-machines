@@ -276,10 +276,8 @@ void screen_set_touch() //屏幕设置界面的触摸
   {
     buzzer1();
     coordinates_state = !coordinates_state;
-    //my_lcd.Fill_Screen(BLACK); //画黑色清屏
-    //my_lcd.Fill_Rect(130, 50, 100, 16, BLACK);
+    my_lcd.Fill_Screen(BLACK); //画黑色清屏
     display_state = ScreenSetDisplay;
-    delay(100);
   }
   else if (px < 270 && px > 50 && py < 70  && py > 45) //开关校准屏幕
   {
