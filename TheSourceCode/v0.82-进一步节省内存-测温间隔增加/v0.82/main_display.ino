@@ -40,4 +40,6 @@ void mainDisplay()
   my_lcd.Print_Number_Int(t12_temp, 5, 30, 4, '0', 10);
   my_lcd.Set_Text_Size(3);
   my_lcd.Print_Number_Int(set_temp, 45, 150, 4, '0', 10);
+  //my_lcd.Set_Text_Size(1);
+  //my_lcd.Print_Number_Int(t12_temp_read_time, 150, 150, 5, '0', 10);
 }

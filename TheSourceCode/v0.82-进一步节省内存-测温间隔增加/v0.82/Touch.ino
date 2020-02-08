@@ -120,7 +120,7 @@ void main_touch() //主界面的触摸
   {
     t12_switch = 0; //关闭总开关
     display_state = 1; //刷新一下
-    t12_temp_read_time = 900; //延长测量时间
+    t12_temp_read_time = 600; //延长测量时间
     sleep_count = 0;
     buzzer(1);
   }
