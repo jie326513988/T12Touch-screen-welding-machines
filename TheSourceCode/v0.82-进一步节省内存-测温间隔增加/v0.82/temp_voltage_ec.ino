@@ -28,11 +28,11 @@ void read_t12_temp() //定时读取T12的温度
   t12_display(); //总显示函数
   //int time1 = millis();
   //Serial.println(time1 - time0);
-  for (uint8_t a = 0; a < 6; a++) //稍微滤一下波
+  for (uint8_t a = 0; a < 10; a++) //稍微滤一下波
   {
     t12_ad += analogRead(t12_temp_pin);
   }
-  t12_ad = t12_ad / 6.0;
+  t12_ad = t12_ad / 10.0;
 
   //计算温度，自己测量自己拟合的曲线，没有测量设备请不要改动这里
   //analogWrite(t12_pwm_pin, pid_out);
