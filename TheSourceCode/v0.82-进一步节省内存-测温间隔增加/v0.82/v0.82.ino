@@ -48,9 +48,9 @@ int16_t pid_out = 0;  //pid输出
 int16_t ek1 = 0;      //上一次差值
 int16_t ek2 = 0;      //上上一次差值
 int16_t ek0 = 0;      //现在差值
-float p = 60.0;
-float i = 0.5;
-float d = 26.0;
+float p = 50.0;
+float i = 0.8;
+float d = 18.0;
 
 //触屏校准、设置相关
 int16_t px, py;                        //p.x,p.y转换后的值
