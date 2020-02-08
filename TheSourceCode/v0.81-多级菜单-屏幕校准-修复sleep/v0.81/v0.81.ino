@@ -53,9 +53,9 @@ float i = 0.5;
 float d = 26.0;
 
 //触屏校准、设置相关
-int16_t px, py;                            //p.x,p.y转换后的值
+int16_t px, py;                        //p.x,p.y转换后的值
 int16_t min_px, max_px;                //计算X范围
-int16_t min_py, max_py;               //计算Y范围
+int16_t min_py, max_py;                //计算Y范围
 uint16_t MIN_PX = 125, MAX_PX = 910;   //原始X范围
 uint16_t MIN_PY = 85, MAX_PY = 895;    //原始Y范围
 uint8_t calibration_location = 0;      //校准的位置 1-左上角，2-右上角，3-右下角，4-左下角
@@ -104,9 +104,9 @@ boolean dotFlag = 0;               //小数点标志位 0-关闭，1-开启
 
 //计数相关
 uint32_t t12_temp_time = 0;         //t12温度计算 定时运行的对比时间
-uint16_t t12_temp_read_time = 0;  //t12温度计算 定时运行的时间
+uint16_t t12_temp_read_time = 900;  //t12温度计算 定时运行的时间
 uint32_t sleep_read_time = 0;       //读取休眠 定时运行的对比时间
-uint32_t volage_time = 3000;           //电压、NTC读取 定时运行的对比时间
+uint32_t volage_time = 3000;        //电压、NTC读取 定时运行的对比时间
 uint32_t touch_time = 0;            //触摸消抖的对比时间
 
 //T12及温度相关
