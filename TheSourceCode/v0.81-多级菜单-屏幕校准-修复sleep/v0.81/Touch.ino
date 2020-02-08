@@ -1,4 +1,4 @@
-//触摸时的操作
+//触摸决策
 /*
   打开TouchScreen.cpp修改成，看个人需要修改
   #define NUMSAMPLES 20  较快的触摸响应，精度适中可能会有误触，占用更多内存
@@ -120,7 +120,7 @@ void main_touch() //主界面的触摸
   {
     t12_switch = 0; //关闭总开关
     display_state = 1; //刷新一下
-    t12_temp_read_time = 800; //延长测量时间
+    t12_temp_read_time = 900; //延长测量时间
     sleep_count = 0;
     buzzer1();
   }
@@ -324,7 +324,7 @@ void screen_set_touch() //屏幕设置界面的触摸
     }
     else {
       my_lcd.Fill_Screen(BLACK); //画黑色清屏
-      calibration_location = 1;
+      calibration_location = 1; //校准位置1
       display_state = ScreenSetDisplay;
       for (uint8_t a = 0; a < 3; a++) {
         digitalWrite(buzzer_pin, 1);
