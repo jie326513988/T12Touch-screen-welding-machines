@@ -48,9 +48,9 @@ int16_t pid_out = 0;  //pid输出
 int16_t ek1 = 0;      //上一次差值
 int16_t ek2 = 0;      //上上一次差值
 int16_t ek0 = 0;      //现在差值
-float p = 60.0;
-float i = 0.5;
-float d = 25.0;
+float p = 50.0;
+float i = 0.8;
+float d = 30.0;
 
 //触屏校准、设置相关
 int16_t px, py;                        //p.x,p.y转换后的值
@@ -178,7 +178,6 @@ void setup()
   //bitWrite(PORTC, 7, 0);
   bitWrite(DDRB, 2, 1);     //pinMode(t12_pwm_pin, 1);
   bitWrite(DDRB, 3, 1);     //pinMode(buzzer_pin, 1);
-
   my_lcd.Init_LCD();         //屏幕初始化
   my_lcd.Fill_Screen(BLACK); //设置黑色背景
   my_lcd.Set_Rotation(1);    //设置屏幕的旋转旋转90度，即横屏显示
@@ -204,7 +203,6 @@ void setup()
   EEPROM.get(MIN_PY_eeprom, MIN_PY);
   EEPROM.get(MAX_PY_eeprom, MAX_PY);
   //******************************************************//
-
   wdt_enable(WDTO_1S);  //开启看门狗，超时为1秒
 }
 

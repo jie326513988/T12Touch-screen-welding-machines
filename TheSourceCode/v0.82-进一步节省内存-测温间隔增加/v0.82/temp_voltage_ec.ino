@@ -21,7 +21,7 @@ void read_t12_temp() //定时读取T12的温度
 {
   if (millis() - t12_temp_time < t12_temp_read_time) return;
   t12_temp_time = millis();
-  analogWrite(t12_pwm_pin, 0);
+  digitalWrite(t12_pwm_pin, 0);
   //int time0 = millis();
   //总显示函数相当于延时大概110ms,
   //因为运放输出部分加有低通滤波，需要等待一段时间等滤波电容放完电再测量，不然测量到的值不准
