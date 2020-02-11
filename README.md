@@ -67,6 +67,16 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
    使用2.4寸带触摸功能LCD屏幕模块，拔插式。提供显示功能和触摸功能。<br>
 6.控制核心<br>
    使用ArduinoProMini平台，核心为Atmel328p-AU,拔插式。<br>
+ ### T12温度测量的方法及曲线拟合  
+ * 因为每个厂家的T12内的热电偶都会有不同，所以不能使用常规的K/J/B型热电偶的分度表，除非T12厂家有给出
+ * 准备一个500℃的测温设备，紧贴在T12的发热尖端，使用高温胶带绑紧
+ * T12的热电偶电压经运算放大器510倍后再使用arduino测量T12的AD值，即T12热电偶的电压转换成数字量后的值
+ * 使用pid算法加热T12，设置加热到的AD值位50-1000，每增加50个AD值记录一次温度
+ * 记录得到AD值和对应的温度值后，使用EXCEL中的曲线拟合功能，拟合出一条一元二次方程，此方程就是温度和AD关系的曲线
+ * 有了此方程我们就能从T12当前的AD值计算出温度值
+ * 本项目的方程 temp = -0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978
+ * 注意不同厂家的T12热电偶规格不同，更换厂家需要重新拟合一次曲线。
+   
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/01.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/02.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/03.jpg)
