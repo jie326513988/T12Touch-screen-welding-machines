@@ -32,9 +32,11 @@ void setDisplay()
   //show_number_int(MIN_PY, 125, 186, 1, fc2, BLACK, 0);
   //show_number_int(MAX_PY, 205, 186, 1, fc2, BLACK, 0);
   show_number_int(t12_temp, 46, 184, 1, fc2, BLACK, 0);
-  my_lcd.Print_Number_Int(t12_ad, 40, 176, 5, '0', 10);
-  show_number_int(pid_out, 46, 192, 1, fc2, BLACK, 0);
-  show_number_int(sleep_count, 46, 200, 1, fc2, BLACK, 0);
+  my_lcd.Print_Number_Int(t12_ad, 46, 176, 5, '0', 10);
+  my_lcd.Print_Number_Int(pid_out, 46, 192, 4, ' ', 10);
+  my_lcd.Print_Number_Int(sleep_count, 46, 200, 4, ' ', 10);
+  //show_number_int(pid_out, 46, 192, 1, fc2, BLACK, 0);
+  //show_number_int(sleep_count, 46, 200, 1, fc2, BLACK, 0);
   //show_number_int(digitalRead(sleep_pin), 40, 200, 1, fc2, BLACK, 0);
 }
 

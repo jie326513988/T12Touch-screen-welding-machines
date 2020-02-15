@@ -3,7 +3,7 @@
    PWM输出修改成相位和频率校正模式，并把频率降低至61HZ
    烙铁发出的滴滴声大幅下降，频率提升到16khz时烙铁的滴滴声彻底听不见
    但MOS管发热严重并且控温效果差故不用高频PWM
-   喜欢滴滴声的可以用V0.82。
+   喜欢滴滴声的可以用Pid第30行。
 */
 #include <TouchScreen.h>     //触摸库
 #include <LCDWIKI_GUI.h>    //LCD扩展库
@@ -55,9 +55,9 @@ int16_t pid_out = 0;  //pid输出
 int16_t ek1 = 0;      //上一次差值
 int16_t ek2 = 0;      //上上一次差值
 int16_t ek0 = 0;      //现在差值
-float p = 82.0;
-float i = 1.2;
-float d = 35.0;
+float p = 85.0;
+float i = 0.6;
+float d = 32.0;
 
 //触屏校准、设置相关
 int16_t px, py;                        //p.x,p.y转换后的值
@@ -118,7 +118,7 @@ uint32_t touch_time = 0;            //触摸消抖的对比时间
 
 //T12及温度相关
 float t12_ad = 0.0;        //T12原始AD
-uint16_t t12_temp = 0.0;   //T12温度
+float t12_temp = 0.0;   //T12温度
 boolean t12_switch = 0;    //T12加热总开关
 int16_t set_temp = 260;    //设置温度
 float ntc_temp = 0;        //ntc温度

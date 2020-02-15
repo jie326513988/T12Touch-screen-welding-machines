@@ -36,8 +36,8 @@ void read_t12_temp() //定时读取T12的温度
 
   //计算温度，自己测量自己拟合的曲线，没有测量设备请不要改动这里
   //analogWrite(t12_pwm_pin, pid_out);
-  float temp = float(-0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978);
-  t12_temp += (temp - t12_temp) * 0.85; //温度补偿
+  float temp = -0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978;
+  t12_temp += float((temp - t12_temp) * 0.85); //温度补偿
   t12_pid(); //运行pid
 
   //Serial.print(t12_temp);
@@ -82,11 +82,11 @@ void ntc_temp_read() //读取ntc温度
 void ec_read() //读取电流
 {
   float ec_ad = 0.0;
-  for (uint8_t a = 0; a < 30; a++) //稍微滤一下波
+  for (uint8_t a = 0; a < 20; a++) //稍微滤一下波
   {
     ec_ad += analogRead(ec_pin);
   }
-  ec = (ec_ad / 30.0) * vcc_refer_1024;
+  ec = (ec_ad / 20.0) * vcc_refer_1024;
   //Serial.print("ec:"); Serial.println(ec, 2);
   ec = (ec - vcc_refer_ec) / 0.185;
   if (ec < 0) ec = 0;             //没有负电流
