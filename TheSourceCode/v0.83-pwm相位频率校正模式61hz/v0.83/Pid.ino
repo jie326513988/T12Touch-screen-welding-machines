@@ -19,7 +19,7 @@ void t12_pid()
     else if (ek0 <= 10  && ek0 >= 0)   //差值0-10度内
     {
       t12_temp_read_time = 200;  //缩短采样时间
-      pid_out = float((p * ek0) - (i * ek1) + (d * ek2) + ((0.0015 * t12_temp + 0.045) * t12_temp)); //最后为0差值补偿
+      pid_out = float((p * ek0) - (i * ek1) + (d * ek2) + ((0.0012 * t12_temp + 0.042) * t12_temp)); //最后为0差值补偿
       //pid_out = float((p * ek0) - (i * ek1) + (d * ek2));
       //pid_out = float((p * (ek0 - ek1)) + (i * ek0) + (d * (ek0 - 2 * ek1 + ek2)));
       if (pid_out > 511) pid_out = 511;

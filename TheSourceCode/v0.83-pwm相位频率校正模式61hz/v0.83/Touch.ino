@@ -26,7 +26,7 @@ void touch()
   TSPoint p = ts.getPoint();
   pinMode(XM, OUTPUT);
   pinMode(YP, OUTPUT);
-  if (p.z < MAX_PZ && p.z > MIN_PZ && p.x < 1020 && p.x > 60 && p.y < 1020 && p.y > 60)
+  if (p.z < 900 && p.z > 240 && p.x < 1000 && p.x > 60 && p.y < 1000 && p.y > 60)
   {
     //py = map(p.x, 910, 125, 0, 240);
     //px = map(p.y, 85, 895, 0, 320);

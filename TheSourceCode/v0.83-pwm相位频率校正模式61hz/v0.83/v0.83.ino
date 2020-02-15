@@ -55,9 +55,9 @@ int16_t pid_out = 0;  //pid输出
 int16_t ek1 = 0;      //上一次差值
 int16_t ek2 = 0;      //上上一次差值
 int16_t ek0 = 0;      //现在差值
-float p = 85.0;
+float p = 98.0;
 float i = 0.6;
-float d = 32.0;
+float d = 88.0;
 
 //触屏校准、设置相关
 int16_t px, py;                        //p.x,p.y转换后的值
@@ -69,9 +69,6 @@ uint8_t calibration_location = 0;      //校准的位置 1-左上角，2-右上�
 uint16_t calibration_count = 0;        //校准触摸时间计数
 boolean coordinates_state = 0;         //显示坐标的标志位 0-关闭，1-开启
 boolean calibration_state = 0;         //校准屏幕的标志位 0-关闭，1-开启
-//原始Z压力范围
-#define MIN_PZ 300
-#define MAX_PZ 800
 //x+ x-的电阻值
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 // 我们有一个状态栏，显示FONA是否正常工作
@@ -150,7 +147,7 @@ uint8_t change_num = 0;                 //需要改变的数值标志位
 
 void setup()
 {
-  //Serial.begin(9600);
+  //Serial.begin(115200);
   /*pinMode(sleep_pin, INPUT_PULLUP);//设置上拉模式
     pinMode(t12_temp_pin, 0);
     pinMode(ec_pin, 0);
