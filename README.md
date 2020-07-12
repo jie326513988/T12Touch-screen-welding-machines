@@ -3,7 +3,7 @@
 * Arduino核心板，触摸屏，降压电路都为模块拔插式，其他部分电路为贴片焊接，方便新手，方便调试。
 * 从30℃加热到320℃需12-15秒，稳定跳动温度+1、-3℃，与实际误差1-10℃（跟T12厂商有关）。
 * 观看视频https://www.bilibili.com/video/av83184959
-* 基本功能已经完善。
+* 基本功能已经完善:
     *  触摸调节温度，40-390℃
     *  使用虚拟数字键盘
     *  调节pid参数
@@ -13,7 +13,20 @@
     *  断电保存数据
     *  硬件真实电流，软件过压过流机内高温保护
     *  内置看门狗防止死机
-#### 2020-07-12 poms版本正式发布，电流采样使用INA193芯片。兼容两款DC-DC降压模块，建议调到6.5V使用。
+#### 2020-07-12 PMos版本正式发布，目前主要有两个版本，nano和uno。电流采样改用INA193芯片。兼容两款DC-DC降压模块，建议调到6.5V使用。
+### 必读注意！！！
+###   1：nano的bootloader使用看门狗有几率卡死，uno正常，建议刷成uno的bootloader
+###   2：为了加快触摸的读取速度，需要修改以下内容，但有小几率会误触
+###      打开TouchScreen.cpp ,修改NUMSAMPLES 后面的数值为 24
+   
+###   v1.2.0 PMOS版本-Nano的壳UNO的心
+###    新加手动温度补偿的功能，因nano内存不足需要刷成uno才能使用此版本
+###   v1.1.1 PMOS版本-Nano
+###    优化室温补偿的算法
+###    优化读取电流的算法
+###    优化键盘的算法，增加贴手感响应速度
+###    新增开机读取电压和室温
+ ###   重新测量了T12的温度曲线
 2020-05-10<br> PMos版本已经测试完毕，mos正常发热0-50度，不会高到吓人，测量室温的NTC改为tc1047芯片，3D打印的外壳也重新设计并上传了。
 2020-02-17<br> NMOS的版本不再更新，即现在的版本（程序0.84和PCB1.3、1.4）。电路将大改一次，改用PMOS管改善发热问题，改用运放加0.1R的电阻检测电流，丢弃垃圾电流芯片。核心、5v电源和屏幕依旧使用拔插式。<br>
 2020-02-17<br> v0.84，修改了主界面和设置界面的布局，使其更加对称顺眼。<br>
@@ -51,13 +64,13 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
 #define XM A1  // must be an analog pin, use "An" notation!<br>
 #define YM 9   // can be a digital pin<br>
 #define XP 8   // can be a digital pin<br>
-#define t12_temp_pin    A5       //T12温度读取引脚<br>
-#define sleep_pin       A3       //休眠状态读取引脚<br>
-#define ec_pin          A4       //电流读取引脚<br>
-#define volage_pin      A6       //电源电压读取引脚<br>
-#define ntc_pin         A7       //ntc读取引脚<br>
-#define t12_pwm_pin     10       //T12加热控制引脚<br>
-#define buzzer_pin      11       //蜂鸣器控制引脚<br><br>
+#define t12_temp_pin    A5                //T12温度读取引脚
+#define sleep_pin       A3                //休眠状态读取引脚
+#define ec_pin          A4                //电流读取引脚
+#define volage_pin      A6                //电源电压读取引脚
+#define tc1047_pin      A7                //tc1047读取引脚
+#define t12_pwm_pin     10                //T12加热控制引脚
+#define buzzer_pin      11                //蜂鸣器控制引脚
 #### 电路简介 PCB文件待完善
 1.热电偶信号放大电路<br>
    使用AD8628轨到轨运算放大器，放大510倍，输入和输出均加有低通滤波器。<br>
@@ -80,7 +93,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
  * 使用pid算法加热T12，设置加热到的AD值为0-1000，每隔100个AD值记录一次温度
  * 记录得到AD值和对应的温度值后，使用EXCEL中的曲线拟合功能，拟合出一条一元二次方程，此方程就是温度和AD关系的曲线
  * 有了此方程我们就能从T12当前的AD值计算出温度值
- * 本项目的方程 temp = -0.000184 * t12_ad * t12_ad + 0.5532 * t12_ad + 34.978
+ * 本项目的方程 t12_temp = -0.0001003741 * t12_ad * t12_ad + 0.4826188328 * t12_ad + 22.0884984056;
  * 注意不同厂家的T12热电偶规格不同，更换厂家需要重新拟合一次曲线。
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/14.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/01.jpg)
