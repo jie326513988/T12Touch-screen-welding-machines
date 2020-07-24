@@ -95,7 +95,7 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
  * 有了此方程我们就能从T12当前的AD值计算出温度值
  * 本项目的方程 t12_temp = -0.0001003741 * t12_ad * t12_ad + 0.4826188328 * t12_ad + 22.0884984056;
  * 注意不同厂家的T12热电偶规格不同，更换厂家需要重新拟合一次曲线。
-![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/14.jpg)
+![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/15.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/01.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/02.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/03.jpg)
