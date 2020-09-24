@@ -1,10 +1,10 @@
 # T12触屏焊台-Atmega328p-au核心
 * 使用了[LCDWIKI_KBV、LCDWIKI_GUI、TouchScreen库](http://www.lcdwiki.com/zh/2.4inch_Arduino_Display)，感谢[LCDWIKI](http://www.lcdwiki.com)。
 * Arduino Nano，触摸屏，降压电路都为模块拔插式，其他部分电路为贴片焊接，方便新手。
-* 从30℃加热到320℃需16-20秒，稳定跳动温度±2℃，适配深圳头。
+* 从30℃加热到400℃需16-20秒，稳定跳动温度±2℃，适配深圳头。
 * 观看视频https://www.bilibili.com/video/av83184959
 * 基本功能已经完善:
-    *  触摸调节温度，40-390℃
+    *  触摸调节温度，30-400℃
     *  使用虚拟数字键盘
     *  可菜单调节 单神经元PID，自主学习，控制精确（新增）
     *  可菜单调节 烙铁的休眠时间和温度
