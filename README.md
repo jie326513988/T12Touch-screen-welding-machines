@@ -104,10 +104,10 @@ LCDWIKI_KBV mylcd(ILI9341, A2, A1, 13, A0, 12);    //model,cs,cd,wr,rd,resett<br
    * 准备一个能测500℃以上的测温设备，紧贴在T12的发热尖端，使用高温胶带绑紧
    * T12的热电偶电压经运算放大器510倍后再使用arduino测量T12的AD值，即T12热电偶的电压转换成数字量后的值
    * 使用pid算法加热T12，设置加热到的AD值为0-1000，每隔100个AD值记录一次温度
-   * 记录得到AD值和对应的温度值后，使用EXCEL中的曲线拟合功能，拟合出一条一元二次方程，此方程就是温度和AD关系的曲线
+   * 记录得到AD值和对应的温度值后，使用EXCEL中的曲线拟合功能，拟合出一条三项式方程，此方程就是温度和AD关系的曲线
    * 有了此方程我们就能从T12当前的AD值计算出温度值
-   * 本项目的方程 t12_temp = -0.00010037 * t12_ad * t12_ad + 0.48261 * t12_ad + 22.0884
-   * 注意不同厂家的T12热电偶规格不同，更换厂家需要重新拟合一次曲线。
+   * 本项目的方程 t12_temp = 0.0000001 * t12_ad * t12_ad * t12_ad - 0.00031185 * t12_ad * t12_ad + 0.64940017 * t12_ad + 15.945058;
+   * 注意不同厂家的T12热电偶规格不同，更换厂家需要重新拟合一次曲线，本项目使用深圳头。
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/14.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/01.jpg)
 ![](https://github.com/jie326513988/T12Touch-screen-welding-machines/blob/master/compressed%20image/15.jpg)
