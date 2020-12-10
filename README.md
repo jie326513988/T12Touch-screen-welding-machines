@@ -1,4 +1,4 @@
-# 请注意！电流采样电路使用方法错误，但不影响使用，修正版本正在制作！
+# 请注意！电流采样电路使用方法错误，电流不准，但不影响其他功能使用，修正版本正在制作！
 # T12触屏焊台-Atmega328p-au核心
 * 使用了[LCDWIKI_KBV、LCDWIKI_GUI、TouchScreen库](http://www.lcdwiki.com/zh/2.4inch_Arduino_Display)，感谢[LCDWIKI](http://www.lcdwiki.com)。
 * Arduino Nano，触摸屏，降压电路都为模块拔插式，其他部分电路为贴片焊接，方便新手。
